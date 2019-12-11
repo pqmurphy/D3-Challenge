@@ -66,34 +66,24 @@ d3.csv("data.csv").then(function(healthdata) {
     .attr("fill", "pink")
     .attr("opacity", ".5");
 
-    // Tool Tips
-    var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
-      .html(function(d) {
-        return (`${d.state}`);
-      });
+    // Axis Titles
 
-    chartGroup.call(toolTip);
-
-    circlesGroup.on("click", function(data) {
-      toolTip.show(data, this);
-    })
-      .on("mouseout", function(data, index) {
-        toolTip.hide(data);
-      });
-
-      chartGroup.append("text")
+    chartGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left + 40)
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Number of Billboard 100 Hits");
+      .text("Obesity");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Hair Metal Band Hair Length (inches)");
+      .text("Income");
+
+      chartGroup.append("text")
+      .attr("transform", `translate(${width / 2}, ${0})`)
+      .attr("class", "axisText")
+      .text("Income vs. Obesity");
 
     });
